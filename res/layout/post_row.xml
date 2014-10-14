@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkorange"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/text_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="63dp"
+        android:text="@string/medium_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text_username"
+        android:layout_below="@+id/text_username"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <ImageView
+        android:id="@+id/small_homer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/text_date"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="Homer image"
+        android:src="@drawable/smallhomer" />
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_post"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/text_username"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

@@ -10,9 +10,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:icon="@drawable/smallhomer"  
+        android:label="@string/app_name"             
+        android:theme="@style/AppTheme" 
+        android:logo="@drawable/smallhomer">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -22,24 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SecondScreen"
-            android:label="SecondScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.SECONDSCREEN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ThirdScreen"
-            android:label="ThirdScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.THIRDSCREEN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SecondScreen" ></activity>
+        <activity android:name=".ThirdScreen" ></activity>
     </application>
 
 </manifest>
