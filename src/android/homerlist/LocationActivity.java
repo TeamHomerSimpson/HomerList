@@ -8,7 +8,7 @@ public class LocationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.google_activity);
+		setContentView(R.layout.location_activity);
 	}
 
 }
