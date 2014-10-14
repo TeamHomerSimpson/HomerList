@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".SecondScreen" ></activity>
         <activity android:name=".ThirdScreen" ></activity>
+        <activity android:name=".GoogleMaps" ></activity>
     </application>
 
 </manifest>
