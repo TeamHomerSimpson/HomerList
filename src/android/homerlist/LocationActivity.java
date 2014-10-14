@@ -3,7 +3,7 @@ package android.homerlist;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class GoogleMaps extends Activity {
+public class LocationActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	

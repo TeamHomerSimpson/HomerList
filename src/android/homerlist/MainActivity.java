@@ -17,7 +17,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	List<String> notes = new ArrayList<String>();
 	public String username;
 	public String note;
-	public Button createNote, deleteBtn;
+	public Button createNote, deleteBtn, selectLocationBtn;
 	public EditText userInput, submitNote;
 
 	@Override
@@ -30,22 +30,39 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		createNote = (Button) findViewById(R.id.createNote);
 		createNote.setOnClickListener(this);
+		
+		selectLocationBtn = (Button) findViewById(R.id.selectLocationBtn);
+		selectLocationBtn.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
-		final Intent intent = new Intent(this, SecondScreen.class);
-		username = userInput.getText().toString();
-		note = submitNote.getText().toString();
-
-		if (isFillUserOrNote()) {
-			if (v.getId() == R.id.createNote) {
-				intent.putExtra("username", username);
-				intent.putExtra("post", note);
-				Toast.makeText(this, "Welcome " + username, Toast.LENGTH_SHORT)
-						.show();
-
-				startActivity(intent);
+		
+		try {
+			
+			if (v.getId() == R.id.selectLocationBtn) {
+				final Intent locationScreenIntent = new Intent(this, LocationActivity.class);
+				startActivity(locationScreenIntent);
 			}
+			
+			else if (v.getId() == R.id.createNote) {
+				final Intent intent = new Intent(this, SecondScreen.class);
+				username = userInput.getText().toString();
+				note = submitNote.getText().toString();
+
+				if (isFillUserOrNote()) {
+					if (v.getId() == R.id.createNote) {
+						intent.putExtra("username", username);
+						intent.putExtra("post", note);
+						Toast.makeText(this, "Welcome " + username, Toast.LENGTH_SHORT)
+								.show();
+
+						startActivity(intent);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 

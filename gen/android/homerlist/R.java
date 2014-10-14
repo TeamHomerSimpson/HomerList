@@ -42,19 +42,20 @@ public final class R {
         public static final int smallhomer=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000d;
+        public static final int action_settings=0x7f0a000e;
         public static final int addPicture=0x7f0a0005;
-        public static final int btn_delete=0x7f0a000c;
+        public static final int btn_delete=0x7f0a000d;
         public static final int createNote=0x7f0a0006;
         public static final int footer=0x7f0a0002;
         public static final int header=0x7f0a0001;
-        public static final int list_view=0x7f0a000b;
+        public static final int list_view=0x7f0a000c;
         public static final int scrollView1=0x7f0a0000;
-        public static final int small_homer=0x7f0a0009;
+        public static final int selectLocationBtn=0x7f0a0007;
+        public static final int small_homer=0x7f0a000a;
         public static final int submitNote=0x7f0a0004;
-        public static final int text_date=0x7f0a000a;
-        public static final int text_post=0x7f0a0008;
-        public static final int text_username=0x7f0a0007;
+        public static final int text_date=0x7f0a000b;
+        public static final int text_post=0x7f0a0009;
+        public static final int text_username=0x7f0a0008;
         public static final int userInput=0x7f0a0003;
     }
     public static final class layout {
@@ -77,6 +78,7 @@ public final class R {
         public static final int homer_list=0x7f070001;
         public static final int medium_text=0x7f070009;
         public static final int put_note=0x7f070003;
+        public static final int select_location=0x7f07000a;
         public static final int username=0x7f070002;
     }
     public static final class style {
