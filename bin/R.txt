@@ -105,10 +105,10 @@ int drawable ic_plusone_tall_off_client 0x7f02001f
 int drawable powered_by_google_dark 0x7f020020
 int drawable powered_by_google_light 0x7f020021
 int drawable smallhomer 0x7f020022
-int id action_settings 0x7f070023
+int id action_settings 0x7f070022
 int id addPicture 0x7f070019
 int id book_now 0x7f070010
-int id btn_delete 0x7f070022
+int id btn_delete 0x7f070021
 int id buyButton 0x7f07000a
 int id buy_now 0x7f07000f
 int id buy_with_google 0x7f07000e
@@ -120,7 +120,6 @@ int id header 0x7f070015
 int id holo_dark 0x7f070005
 int id holo_light 0x7f070006
 int id hybrid 0x7f070004
-int id list_view 0x7f070021
 int id map 0x7f07001c
 int id match_parent 0x7f07000c
 int id monochrome 0x7f070013
@@ -152,6 +151,7 @@ int string accept 0x7f050002
 int string action_settings 0x7f05002b
 int string add_pictire 0x7f050027
 int string app_name 0x7f050023
+int string cancel_message 0x7f050030
 int string common_android_wear_notification_needs_update_text 0x7f050009
 int string common_android_wear_update_text 0x7f050016
 int string common_android_wear_update_title 0x7f050014
@@ -180,6 +180,7 @@ int string common_google_play_services_update_title 0x7f050013
 int string common_open_on_phone 0x7f050021
 int string common_signin_button_text 0x7f05001f
 int string common_signin_button_text_long 0x7f050020
+int string confirm_delete 0x7f05002e
 int string create_calendar_message 0x7f050005
 int string create_calendar_title 0x7f050004
 int string create_note 0x7f050028
@@ -188,6 +189,7 @@ int string decline 0x7f050003
 int string delete_old 0x7f05002a
 int string homer_list 0x7f050024
 int string medium_text 0x7f05002c
+int string ok_message 0x7f05002f
 int string put_note 0x7f050026
 int string select_location 0x7f05002d
 int string store_picture_message 0x7f050001

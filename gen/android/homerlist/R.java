@@ -424,10 +424,10 @@ containing a value of this type.
         public static final int smallhomer=0x7f020022;
     }
     public static final class id {
-        public static final int action_settings=0x7f070023;
+        public static final int action_settings=0x7f070022;
         public static final int addPicture=0x7f070019;
         public static final int book_now=0x7f070010;
-        public static final int btn_delete=0x7f070022;
+        public static final int btn_delete=0x7f070021;
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;
         public static final int buy_with_google=0x7f07000e;
@@ -439,7 +439,6 @@ containing a value of this type.
         public static final int holo_dark=0x7f070005;
         public static final int holo_light=0x7f070006;
         public static final int hybrid=0x7f070004;
-        public static final int list_view=0x7f070021;
         public static final int map=0x7f07001c;
         public static final int match_parent=0x7f07000c;
         public static final int monochrome=0x7f070013;
@@ -479,6 +478,7 @@ containing a value of this type.
         public static final int action_settings=0x7f05002b;
         public static final int add_pictire=0x7f050027;
         public static final int app_name=0x7f050023;
+        public static final int cancel_message=0x7f050030;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
         public static final int common_android_wear_notification_needs_update_text=0x7f050009;
@@ -578,6 +578,7 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f050020;
+        public static final int confirm_delete=0x7f05002e;
         public static final int create_calendar_message=0x7f050005;
         public static final int create_calendar_title=0x7f050004;
         public static final int create_note=0x7f050028;
@@ -586,6 +587,7 @@ containing a value of this type.
         public static final int delete_old=0x7f05002a;
         public static final int homer_list=0x7f050024;
         public static final int medium_text=0x7f05002c;
+        public static final int ok_message=0x7f05002f;
         public static final int put_note=0x7f050026;
         public static final int select_location=0x7f05002d;
         public static final int store_picture_message=0x7f050001;
