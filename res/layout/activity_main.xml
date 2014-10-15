@@ -78,6 +78,16 @@
             android:layout_below="@+id/addPicture"
             android:layout_marginTop="15dp"
             android:text="@string/create_note" />
+
+        <Button
+            android:id="@+id/selectLocationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/createNote"
+            android:layout_below="@+id/createNote"
+            android:layout_marginTop="17dp"
+            android:text="@string/select_location" />
+
     </RelativeLayout>
 
 </ScrollView>
