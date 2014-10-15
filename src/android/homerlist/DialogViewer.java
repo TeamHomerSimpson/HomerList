@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 public class DialogViewer extends DialogFragment {
+
+	public static boolean isClickYes = false;
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		// Use the Builder class for convenient dialog construction
@@ -16,7 +18,7 @@ public class DialogViewer extends DialogFragment {
 				.setPositiveButton(R.string.ok_message,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								// delete
+								isClickYes = true;
 							}
 						})
 				.setNegativeButton(R.string.cancel_message,

@@ -88,6 +88,15 @@
             android:layout_marginTop="17dp"
             android:text="@string/select_location" />
 
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/selectLocationBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/common_full_open_on_phone" />
+
     </RelativeLayout>
 
 </ScrollView>

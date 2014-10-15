@@ -2,7 +2,6 @@ package android.homerlist;
 
 import java.util.ArrayList;
 
-import android.app.DialogFragment;
 import android.app.ListActivity;
 import android.homerlist.Note;
 import android.os.Bundle;
@@ -56,7 +55,7 @@ public class SecondScreen extends ListActivity implements View.OnClickListener {
 		DialogViewer newDialog = new DialogViewer();
 		newDialog.show(getFragmentManager(), "DialogViewer");
 		// todo make this work
-//		if (newDialog.) {
+//		if (isClickYes) {
 //			deleteItem(position);
 //		}		
 	}
