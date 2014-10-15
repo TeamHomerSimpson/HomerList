@@ -1,12 +1,15 @@
 package android.homerlist;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
 import com.telerik.everlive.sdk.core.EverliveApp;
+import com.telerik.everlive.sdk.core.query.definition.FileField;
 import com.telerik.everlive.sdk.core.result.RequestResult;
 
 public class BackendService extends Service
@@ -27,6 +30,20 @@ public class BackendService extends Service
 		app = new EverliveApp("OyATyKiCAzGo7eex");
 		app.workWith().authentication().login("achoraev", "1000")
 		        .executeSync();				
+	}
+	
+	public void UploadFile(EverliveApp app, String fileName, String contentType, InputStream inputStream) {
+	    FileField fileField = new FileField(fileName, contentType, inputStream);
+	    app.workWith().files().upload(fileField).executeSync();
+	}
+	
+//	public String getDownloadLink(EverliveApp app, UUID fileId)
+//	{
+//	    return app.workWith().files().getFileDownloadUrl(fileId);
+//	}
+	
+	public void deleteFileById(EverliveApp app, UUID fileId) {
+	    app.workWith().files().deleteById(fileId).executeAsync();
 	}
 	
 	@SuppressWarnings("deprecation")
