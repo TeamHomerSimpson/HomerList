@@ -34,7 +34,7 @@ public class BackendService extends Service
 	
 	public void UploadFile(EverliveApp app, String fileName, String contentType, InputStream inputStream) {
 	    FileField fileField = new FileField(fileName, contentType, inputStream);
-	    app.workWith().files().upload(fileField).executeSync();
+	    app.workWith().files().upload(fileField).executeAsync();
 	}
 	
 //	public String getDownloadLink(EverliveApp app, UUID fileId)
@@ -81,7 +81,7 @@ public class BackendService extends Service
 						ArrayList images = (ArrayList) allItems.getValue();
 						for (Object image : images) {
 							Image img = (Image) image;
-							intent.putExtra("DATAPASSED", img.getAuthor());
+							intent.putExtra("DATAPASSED", img.getName());
 						}						
 					}
 					

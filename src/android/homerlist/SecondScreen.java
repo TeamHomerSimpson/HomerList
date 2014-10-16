@@ -3,7 +3,6 @@ package android.homerlist;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
-import android.content.Intent;
 import android.homerlist.Note;
 import android.os.Bundle;
 import android.view.View;
@@ -56,11 +55,11 @@ public class SecondScreen extends ListActivity implements View.OnClickListener {
 		super.onListItemClick(l, v, position, id);		
 		DialogViewer newDialog = new DialogViewer();
 		newDialog.show(getFragmentManager(), "DialogViewer");
+		deleteItem(position);		
 		// todo make this work
 //		isClickYes = getIntent().getStringExtra("isClickYes");
 //		if (isClickYes == "true") {
-//			deleteItem(position);
-//			Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
+//			// delete
 //		}		
 	}
 	
