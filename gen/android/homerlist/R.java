@@ -424,9 +424,10 @@ containing a value of this type.
         public static final int smallhomer=0x7f020022;
     }
     public static final class id {
-        public static final int action_settings=0x7f070023;
+        public static final int action_settings=0x7f070024;
         public static final int addPicture=0x7f070019;
         public static final int book_now=0x7f070010;
+        public static final int btn_createNewNote=0x7f070023;
         public static final int btn_delete=0x7f070022;
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;

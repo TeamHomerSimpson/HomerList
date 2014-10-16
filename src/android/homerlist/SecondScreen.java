@@ -3,6 +3,7 @@ package android.homerlist;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.homerlist.Note;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class SecondScreen extends ListActivity implements View.OnClickListener {
 	String username;
 	String noteFromInput;
 	Button deleteBtn;
+	Button createNewNoteBtn;
 	ListView showInput;
 	DBHelper datasource;
 	ArrayList<Note> posts;
@@ -30,6 +32,9 @@ public class SecondScreen extends ListActivity implements View.OnClickListener {
 		showInput = (ListView) findViewById(android.R.id.list);
 		deleteBtn = (Button) findViewById(R.id.btn_delete);
 		deleteBtn.setOnClickListener(this);
+		createNewNoteBtn = (Button) findViewById(R.id.btn_createNewNote);
+		createNewNoteBtn.setOnClickListener(this);
+		
 		username = getIntent().getStringExtra("username");
 		noteFromInput = getIntent().getStringExtra("post");
 
@@ -47,6 +52,12 @@ public class SecondScreen extends ListActivity implements View.OnClickListener {
 	public void onClick(View v) {		
 		if (v.getId() == R.id.btn_delete) {
 			deleteItem(0);
+		}
+		else if (v.getId() == R.id.btn_createNewNote) {
+			final Intent createNewNoteIntent = new Intent(this, MainActivity.class);
+			overridePendingTransition(android.R.anim.fade_in,
+					android.R.anim.fade_out);
+			startActivity(createNewNoteIntent);
 		}
 	}
 
