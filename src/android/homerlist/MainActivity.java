@@ -1,17 +1,29 @@
 package android.homerlist;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.telerik.everlive.sdk.core.EverliveApp;
+import com.telerik.everlive.sdk.core.model.system.File;
+import com.telerik.everlive.sdk.core.result.RequestResult;
+import com.telerik.everlive.sdk.core.result.RequestResultCallbackAction;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.view.MotionEventCompat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +39,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	private Context context = this;
+	
 	List<String> notes = new ArrayList<String>();
 	public String username;
 	public String note;
@@ -34,8 +48,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	public EditText userInput, submitNote;
 	// for camera
 	private ImageView mView;
-
-	Intent intent;	
+	Intent intent;
+	
+	private Goal mGoal;   
+    private ImageView mGoalCover;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +70,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		selectLocationBtn = (Button) findViewById(R.id.selectLocationBtn);
 		selectLocationBtn.setOnClickListener(this);
 		// touch
-		// onTouchEvent(event);		
+		// onTouchEvent(event);
 	}
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		int action = MotionEventCompat.getActionMasked(event);
@@ -105,10 +121,11 @@ public class MainActivity extends Activity implements OnClickListener {
 				}
 				// camera
 			} else if (v.getId() == R.id.addPicture) {
-				final Intent cameraScreen = new Intent(MainActivity.this, ThirdScreen.class);
-				
+				final Intent cameraScreen = new Intent(MainActivity.this,
+						ThirdScreen.class);
+
 				overridePendingTransition(android.R.anim.fade_in,
-						android.R.anim.fade_out);				
+						android.R.anim.fade_out);
 				startActivity(cameraScreen);
 				startCamera();
 			}
@@ -122,19 +139,80 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		// if (resultCode == RESULT_OK) {
+		// mView = (ImageView) findViewById(R.id.imageView1);
+		// Bundle extras = data.getExtras();
+		// Bitmap photo = (Bitmap) extras.get("data");
+		// //data.putExtra("snimka", extras);
+		// startActivity(data);
+		// mView.setImageBitmap(photo);
+		Bitmap bmp_image = null;
 		if (resultCode == RESULT_OK) {
-			mView = (ImageView) findViewById(R.id.imageView1);
-			Bundle extras = data.getExtras();
-			Bitmap photo = (Bitmap) extras.get("data");
-			data.putExtra("snimka", extras);
-			//startActivity(data);
-			// to do work with backend			
-//			BackendService telerikService = new BackendService();
-//			telerikService.UploadFile(telerikService.app, photo, "image/jpg",
-//					inputStream);
-			// mView.setImageBitmap(photo);
+			bmp_image = getImageFromCamera(intent);
+		}
+
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+		if (bmp_image != null) {
+			bmp_image.compress(Bitmap.CompressFormat.JPEG, 50,
+					byteArrayOutputStream);
+			byte[] image = byteArrayOutputStream.toByteArray();
+			InputStream stream = new ByteArrayInputStream(image);
+
+			uploadImage(stream);
 		}
 	}
+	
+	private void uploadImage(final InputStream stream) {
+        DbManager.getInstance().uploadImage(stream, new RequestResultCallbackAction() {
+            @Override
+            public void invoke(RequestResult requestResult) {
+
+                if (requestResult.getSuccess()) {
+                    ArrayList<File> files = (ArrayList<File>) requestResult.getValue();
+
+                    File file = files.get(0);
+
+                    UUID id = UUID.fromString(file.getId().toString());
+                    final UUID oldId = mGoal.getCover();
+                    mGoal.setCover(id);
+
+                    DbManager.getInstance().updateGoalCover(mGoal, new RequestResultCallbackAction() {
+                        @Override
+                        public void invoke(RequestResult requestResult) {
+                            if (requestResult.getSuccess()) {
+                                //Delete old cover from db
+                                if (oldId != null) {
+                                	DbManager.getInstance().deleteImageById(oldId.toString());
+                                }
+
+//                                GoalDetailActivity.this.runOnUiThread(new Runnable() {
+//                                    public void run() {
+//                                        BufferedInputStream bis = new BufferedInputStream(stream, 8192);
+//                                        Bitmap newGoalCover = BitmapFactory.decodeStream(bis);
+//                                        mGoalCover.setImageBitmap(newGoalCover);
+//                                    }
+//                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+	
+	private Bitmap getImageFromCamera(Intent intent) {
+        Uri selectedImage = intent.getData();
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        Cursor cursor = context.getContentResolver().query(
+                selectedImage, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String filePath = cursor.getString(columnIndex);
+        cursor.close();
+
+        return BitmapFactory.decodeFile(filePath);
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -163,5 +241,5 @@ public class MainActivity extends Activity implements OnClickListener {
 			return false;
 		}
 		return true;
-	}		
+	}
 }

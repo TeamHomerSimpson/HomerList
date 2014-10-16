@@ -94,8 +94,7 @@
             android:layout_height="100dp"
             android:layout_below="@+id/selectLocationBtn"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
-            android:src="@drawable/common_full_open_on_phone" />
+            android:layout_marginTop="45dp" />
 
     </RelativeLayout>
 
