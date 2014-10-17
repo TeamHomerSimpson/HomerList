@@ -105,9 +105,10 @@ int drawable ic_plusone_tall_off_client 0x7f02001f
 int drawable powered_by_google_dark 0x7f020020
 int drawable powered_by_google_light 0x7f020021
 int drawable smallhomer 0x7f020022
-int id action_settings 0x7f070023
+int id action_settings 0x7f070024
 int id addPicture 0x7f070019
 int id book_now 0x7f070010
+int id btn_createNewNote 0x7f070023
 int id btn_delete 0x7f070022
 int id buyButton 0x7f07000a
 int id buy_now 0x7f07000f
