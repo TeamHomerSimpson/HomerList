@@ -5,7 +5,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -14,13 +13,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.SyncStateContract.Constants;
-import android.util.Log;
 
 public class LocationActivity extends Activity implements LocationListener, OnMarkerDragListener{
 
@@ -43,44 +39,19 @@ public class LocationActivity extends Activity implements LocationListener, OnMa
 	    map.setOnMarkerDragListener(this);
 	}
 
-	@Override
 	public void onLocationChanged(Location location) {
 		LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 	    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 14);
 	    map.animateCamera(cameraUpdate);
 	    locationManager.removeUpdates(this);
 	    
-	    Marker userMarker = map.addMarker(new MarkerOptions()
+	    @SuppressWarnings("unused")
+		Marker userMarker = map.addMarker(new MarkerOptions()
 	                              .position(latLng)
 	                              .draggable(true));
 	}
 
-	@Override
-	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onMarkerDrag(Marker arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@SuppressWarnings("deprecation")
-	@Override
 	public void onMarkerDragEnd(Marker marker) {
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 		alertDialog.setTitle("Is this your desired location?");
@@ -92,16 +63,31 @@ public class LocationActivity extends Activity implements LocationListener, OnMa
 		});
 		// Set the Icon for the Dialog
 		alertDialog.show();
-		
-		
+						
+	}
+
+	public void onMarkerDrag(Marker arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onMarkerDragStart(Marker arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
 }

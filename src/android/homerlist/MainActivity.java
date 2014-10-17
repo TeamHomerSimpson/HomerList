@@ -1,26 +1,11 @@
 package android.homerlist;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import com.telerik.everlive.sdk.core.EverliveApp;
-import com.telerik.everlive.sdk.core.model.system.File;
-import com.telerik.everlive.sdk.core.result.RequestResult;
-import com.telerik.everlive.sdk.core.result.RequestResultCallbackAction;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.view.MotionEventCompat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {	
@@ -40,7 +24,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	public Button createNote, addPicture, selectLocationBtn;
 	public EditText userInput, submitNote;
 	// for camera
-	private ImageView mView;
 	Intent intent;
 	Intent cameraScreen;
 

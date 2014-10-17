@@ -18,14 +18,12 @@ public class BackendService extends Service
 	EverliveApp app;
 	
 	@Override
-	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
+	public IBinder onBind(Intent intent) {		
 		return null;
 	}
 	
 	@Override
-	public void onCreate() {
-		// TODO Auto-generated method stub
+	public void onCreate() {		
 		super.onCreate();
 		app = new EverliveApp("OyATyKiCAzGo7eex");
 		app.workWith().authentication().login("achoraev", "1000")
@@ -36,11 +34,6 @@ public class BackendService extends Service
 	    FileField fileField = new FileField(fileName, contentType, inputStream);
 	    app.workWith().files().upload(fileField).executeAsync();
 	}
-	
-//	public String getDownloadLink(EverliveApp app, UUID fileId)
-//	{
-//	    return app.workWith().files().getFileDownloadUrl(fileId);
-//	}
 	
 	public void deleteFileById(EverliveApp app, UUID fileId) {
 	    app.workWith().files().deleteById(fileId).executeAsync();
@@ -75,9 +68,11 @@ public class BackendService extends Service
 					Intent intent = new Intent();
 					intent.setAction(MY_ACTION);
 									
+					@SuppressWarnings("rawtypes")
 					RequestResult allItems = app.workWith().data(Image.class)
 					        .getAll().executeSync();
 					if (allItems.getSuccess()) {
+						@SuppressWarnings("rawtypes")
 						ArrayList images = (ArrayList) allItems.getValue();
 						for (Object image : images) {
 							Image img = (Image) image;
